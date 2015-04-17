@@ -1,0 +1,33 @@
+#cloud-config
+hostname: test
+
+coreos:
+  etcd:
+    name:      node001
+    discovery: https://discovery.etcd.io/disco
+    addr:      $public_ipv4:4001
+    peer-addr: $private_ipv4:7001
+  fleet:
+    verbosity: 2
+    metadata:  "hi"
+  update:
+    reboot-strategy: off
+  units:
+    - name:    hi.service
+      command: start
+      enable:  true
+    - name:    bye.service
+      command: stop
+
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0g+ZTxC7weoIJLUafOgrm+h...
+
+users:
+  - name: me
+
+write_files:
+  - path: /etc/yes
+    content: "Hi"
+
+manage_etc_hosts: localhost`
