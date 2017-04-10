@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"github.com/ztsyed/cc-validator/validate"
+	"github.com/genevera/cc-validator/validate"
 	"io/ioutil"
 	"log"
 )
